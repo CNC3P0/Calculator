@@ -36,14 +36,13 @@
 
         <TextView
             android:id="@+id/textView2"
+            android:layout_height="100dp"
             android:layout_columnSpan="4"
             android:layout_columnWeight="1"
             android:layout_gravity="fill"
             android:layout_margin="0dp"
             android:layout_rowWeight="1"
-            android:text="TextView"
-            tools:layout_editor_absoluteY="0dp"
-            android:layout_height="30dp" />
+            tools:layout_editor_absoluteY="0dp" />
 
         <Button
             android:id="@+id/button1"
