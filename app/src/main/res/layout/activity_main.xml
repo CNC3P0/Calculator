@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ConstraintLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="bottom"
+    tools:context="com.example.robert.calculator2.MainActivity">
+
+    <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/GridLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_gravity="fill_horizontal"
+        android:layout_margin="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="0dp"
+        android:adjustViewBounds="true"
+        android:alignmentMode="alignMargins"
+        android:clipToPadding="false"
+        android:columnCount="4"
+        android:fitsSystemWindows="false"
+        android:layoutMode="clipBounds"
+        android:orientation="horizontal"
+        android:padding="0dp"
+        android:rowCount="6"
+        android:useDefaultMargins="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="parent">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_columnSpan="4"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_margin="0dp"
+            android:layout_rowWeight="1"
+            android:text="TextView"
+            tools:layout_editor_absoluteY="0dp"
+            android:layout_height="30dp" />
+
+        <Button
+            android:id="@+id/button1"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_margin="0dp"
+            android:layout_rowWeight="1"
+            android:background="#ef2c6e"
+            android:text="1" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_margin="0dp"
+            android:layout_rowWeight="1"
+            android:background="#c2afdc"
+            android:padding="0dp"
+            android:text="2" />
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_margin="0dp"
+            android:layout_rowWeight="1"
+            android:background="#d2f2f2"
+            android:text="3" />
+
+        <Button
+            android:id="@+id/button4"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_margin="0dp"
+            android:layout_rowWeight="1"
+            android:background="#c2dfa2"
+            android:text="4" />
+
+        <Button
+            android:id="@+id/button5"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_margin="0dp"
+            android:layout_rowWeight="1"
+            android:background="#1f9fcd"
+            android:text="5" />
+
+        <Button
+            android:id="@+id/button6"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_margin="0dp"
+            android:layout_rowWeight="1"
+            android:background="#f251ff"
+            android:text="6" />
+
+        <Button
+            android:id="@+id/button7"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_margin="0dp"
+            android:layout_rowSpan="1"
+            android:layout_rowWeight="1"
+            android:background="#a2dfaf"
+            android:text="7" />
+
+        <Button
+            android:id="@+id/button8"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_margin="0dp"
+            android:layout_rowSpan="1"
+            android:layout_rowWeight="1"
+            android:background="#daaf2f"
+            android:text="8" />
+
+        <Button
+            android:id="@+id/button9"
+            android:layout_columnSpan="1"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_margin="0dp"
+            android:layout_rowWeight="1"
+            android:background="#f21fa2"
+            android:text="9" />
+
+        <Button
+            android:id="@+id/button10"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_margin="0dp"
+            android:layout_rowWeight="1"
+            android:background="#ef2c6e"
+            android:text="10" />
+
+        <Button
+            android:id="@+id/button11"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_margin="0dp"
+            android:layout_rowWeight="1"
+            android:background="#c2afdc"
+            android:padding="0dp"
+            android:text="11" />
+
+        <Button
+            android:id="@+id/button12"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_margin="0dp"
+            android:layout_rowWeight="1"
+            android:background="#d2f2f2"
+            android:text="12" />
+
+        <Button
+            android:id="@+id/button13"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_margin="0dp"
+            android:layout_rowWeight="1"
+            android:background="#c2dfa2"
+            android:text="13" />
+
+        <Button
+            android:id="@+id/button14"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_margin="0dp"
+            android:layout_rowWeight="1"
+            android:background="#c2dfa2"
+            android:text="14" />
+
+        <Button
+            android:id="@+id/button15"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_margin="0dp"
+            android:layout_rowWeight="1"
+            android:background="#1f9fcd"
+            android:text="15" />
+
+        <Button
+            android:id="@+id/button16"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_margin="0dp"
+            android:layout_rowWeight="1"
+            android:background="#f251ff"
+            android:text="16" />
+
+        <Button
+            android:id="@+id/button17"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_margin="0dp"
+            android:layout_rowWeight="1"
+            android:background="#a2dfaf"
+            android:text="17" />
+
+        <Button
+            android:id="@+id/button18"
+            android:layout_columnSpan="2"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_margin="0dp"
+            android:layout_rowWeight="1"
+            android:background="#daaf2f"
+            android:text="18" />
+
+        <Button
+            android:id="@+id/button19"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_margin="0dp"
+            android:layout_rowWeight="1"
+            android:background="#f21fa2"
+            android:text="19" />
+
+    </GridLayout>
+
+</android.support.constraint.ConstraintLayout>
