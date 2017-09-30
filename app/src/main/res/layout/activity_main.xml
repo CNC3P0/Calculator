@@ -35,13 +35,15 @@
         app:layout_constraintVertical_bias="0.984">
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/display"
             android:layout_height="100dp"
             android:layout_columnSpan="4"
             android:layout_columnWeight="1"
             android:layout_gravity="fill"
             android:layout_margin="0dp"
             android:layout_rowWeight="1"
+            android:gravity="right|center_vertical"
+            android:textSize="36sp"
             tools:layout_editor_absoluteY="0dp" />
 
         <Button
@@ -51,6 +53,7 @@
             android:layout_margin="0dp"
             android:layout_rowWeight="1"
             android:background="@android:color/holo_red_dark"
+            android:onClick="onClick"
             android:text="x²"
             android:textSize="36sp" />
 
@@ -61,6 +64,7 @@
             android:layout_margin="0dp"
             android:layout_rowWeight="1"
             android:background="@android:color/holo_orange_dark"
+            android:onClick="onClick"
             android:padding="0dp"
             android:text="√"
             android:textSize="36sp" />
@@ -72,6 +76,7 @@
             android:layout_margin="0dp"
             android:layout_rowWeight="1"
             android:background="@android:color/holo_orange_light"
+            android:onClick="onClick"
             android:text="1/x"
             android:textSize="36sp" />
 
@@ -82,38 +87,8 @@
             android:layout_margin="0dp"
             android:layout_rowWeight="1"
             android:background="@android:color/holo_red_dark"
+            android:onClick="onClick"
             android:text="%"
-            android:textSize="36sp" />
-
-        <Button
-            android:id="@+id/plus"
-            android:layout_columnWeight="1"
-            android:layout_gravity="fill"
-            android:layout_margin="0dp"
-            android:layout_rowWeight="1"
-            android:background="@android:color/holo_green_light"
-            android:text="+"
-            android:textSize="36sp" />
-
-        <Button
-            android:id="@+id/minus"
-            android:layout_columnWeight="1"
-            android:layout_gravity="fill"
-            android:layout_margin="0dp"
-            android:layout_rowWeight="1"
-            android:background="@android:color/holo_blue_light"
-            android:text="-"
-            android:textSize="36sp" />
-
-        <Button
-            android:id="@+id/times"
-            android:layout_columnWeight="1"
-            android:layout_gravity="fill"
-            android:layout_margin="0dp"
-            android:layout_rowSpan="1"
-            android:layout_rowWeight="1"
-            android:background="@android:color/holo_purple"
-            android:text="*"
             android:textSize="36sp" />
 
         <Button
@@ -121,10 +96,45 @@
             android:layout_columnWeight="1"
             android:layout_gravity="fill"
             android:layout_margin="0dp"
+            android:layout_rowWeight="1"
+            android:background="@android:color/holo_green_light"
+            android:onClick="onClick"
+            android:text="/"
+            android:textSize="36sp" />
+
+        <Button
+            android:id="@+id/times"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_margin="0dp"
+            android:layout_rowWeight="1"
+            android:background="@android:color/holo_blue_light"
+            android:onClick="onClick"
+            android:text="*"
+            android:textSize="36sp" />
+
+        <Button
+            android:id="@+id/minus"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_margin="0dp"
+            android:layout_rowSpan="1"
+            android:layout_rowWeight="1"
+            android:background="@android:color/holo_purple"
+            android:onClick="onClick"
+            android:text="-"
+            android:textSize="36sp" />
+
+        <Button
+            android:id="@+id/plus"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_margin="0dp"
             android:layout_rowSpan="1"
             android:layout_rowWeight="1"
             android:background="@android:color/holo_orange_dark"
-            android:text="/"
+            android:onClick="onClick"
+            android:text="+"
             android:textSize="36sp" />
 
         <Button
@@ -135,6 +145,7 @@
             android:layout_margin="0dp"
             android:layout_rowWeight="1"
             android:background="#a2dfaf"
+            android:onClick="onClick"
             android:text="7"
             android:textSize="36sp" />
 
@@ -145,6 +156,7 @@
             android:layout_margin="0dp"
             android:layout_rowWeight="1"
             android:background="#a2dfaf"
+            android:onClick="onClick"
             android:text="8"
             android:textSize="36sp" />
 
@@ -155,6 +167,7 @@
             android:layout_margin="0dp"
             android:layout_rowWeight="1"
             android:background="#a2dfaf"
+            android:onClick="onClick"
             android:padding="0dp"
             android:text="9"
             android:textSize="36sp" />
@@ -166,6 +179,7 @@
             android:layout_margin="0dp"
             android:layout_rowWeight="1"
             android:background="@android:color/holo_orange_light"
+            android:onClick="onClick"
             android:text="C"
             android:textSize="36sp" />
 
@@ -176,6 +190,7 @@
             android:layout_margin="0dp"
             android:layout_rowWeight="1"
             android:background="#a2dfaf"
+            android:onClick="onClick"
             android:text="4"
             android:textSize="36sp" />
 
@@ -186,6 +201,7 @@
             android:layout_margin="0dp"
             android:layout_rowWeight="1"
             android:background="#a2dfaf"
+            android:onClick="onClick"
             android:text="5"
             android:textSize="36sp" />
 
@@ -196,17 +212,19 @@
             android:layout_margin="0dp"
             android:layout_rowWeight="1"
             android:background="#a2dfaf"
+            android:onClick="onClick"
             android:text="6"
             android:textSize="36sp" />
 
         <Button
-            android:id="@+id/absolute"
+            android:id="@+id/changesign"
             android:layout_columnWeight="1"
             android:layout_gravity="fill"
             android:layout_margin="0dp"
             android:layout_rowWeight="1"
             android:background="@android:color/holo_green_light"
-            android:text="| |"
+            android:onClick="onClick"
+            android:text="+/-"
             android:textSize="36sp" />
 
         <Button
@@ -216,6 +234,7 @@
             android:layout_margin="0dp"
             android:layout_rowWeight="1"
             android:background="#a2dfaf"
+            android:onClick="onClick"
             android:text="1"
             android:textSize="36sp" />
 
@@ -227,6 +246,7 @@
             android:layout_margin="0dp"
             android:layout_rowWeight="1"
             android:background="#a2dfaf"
+            android:onClick="onClick"
             android:text="2"
             android:textSize="36sp" />
 
@@ -237,17 +257,30 @@
             android:layout_margin="0dp"
             android:layout_rowWeight="1"
             android:background="#a2dfaf"
+            android:onClick="onClick"
             android:text="3"
             android:textSize="36sp" />
 
         <Button
-            android:id="@+id/changesign"
+            android:id="@+id/absolute"
             android:layout_columnWeight="1"
             android:layout_gravity="fill"
             android:layout_margin="0dp"
             android:layout_rowWeight="1"
             android:background="@android:color/holo_blue_light"
-            android:text="+/-"
+            android:onClick="onClick"
+            android:text="| |"
+            android:textSize="36sp" />
+
+        <Button
+            android:id="@+id/decimal"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_margin="0dp"
+            android:layout_rowWeight="1"
+            android:background="@android:color/holo_red_dark"
+            android:onClick="onClick"
+            android:text="."
             android:textSize="36sp" />
 
         <Button
@@ -257,6 +290,7 @@
             android:layout_margin="0dp"
             android:layout_rowWeight="1"
             android:background="#a2dfaf"
+            android:onClick="onClick"
             android:text="0"
             android:textSize="36sp" />
 
@@ -267,19 +301,11 @@
             android:layout_gravity="fill"
             android:layout_margin="0dp"
             android:layout_rowWeight="1"
-            android:background="?attr/colorControlActivated"
+            android:background="@android:color/holo_purple"
+            android:onClick="onClick"
             android:text="="
             android:textSize="36sp" />
 
-        <Button
-            android:id="@+id/decimal"
-            android:layout_columnWeight="1"
-            android:layout_gravity="fill"
-            android:layout_margin="0dp"
-            android:layout_rowWeight="1"
-            android:background="@android:color/holo_purple"
-            android:text="."
-            android:textSize="36sp" />
     </GridLayout>
 
 </android.support.constraint.ConstraintLayout>

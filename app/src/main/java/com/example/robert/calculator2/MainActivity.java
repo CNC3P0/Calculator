@@ -1,8 +1,11 @@
 package com.example.robert.calculator2;
 
+import android.app.ActivityManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Button;
 
@@ -17,19 +20,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button one = (Button) findViewById(R.id.button1);
-        one.setOnClickListener(this); // calling onClick() method
-        Button two = (Button) findViewById(R.id.button2);
-        two.setOnClickListener(this);
-        Button three = (Button) findViewById(R.id.button3);
-        three.setOnClickListener(this);
-        Button four = (Button) findViewById(R.id.button4);
-        four.setOnClickListener(this); // calling onClick() method
-        Button five = (Button) findViewById(R.id.button5);
-        five.setOnClickListener(this);
-        Button six = (Button) findViewById(R.id.button6);
-        six.setOnClickListener(this);
-
+/**       Button one = (Button) findViewById(R.id.button1);
+         one.setOnClickListener(this); // calling onClick() method
+         Button two = (Button) findViewById(R.id.button2);
+         two.setOnClickListener(this);
+         Button three = (Button) findViewById(R.id.button3);
+         three.setOnClickListener(this);
+         Button four = (Button) findViewById(R.id.button4);
+         four.setOnClickListener(this);
+         Button five = (Button) findViewById(R.id.button5);
+         five.setOnClickListener(this);
+         Button six = (Button) findViewById(R.id.button6);
+         six.setOnClickListener(this);
+ **/
+        TextView tv = (TextView) findViewById(R.id.display);
+        tv.setText("numbers go here");
     }
 
     @Override
@@ -127,7 +132,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.equals:
                 toast("equals");
                 break;
-
 
             default:
                 break;
