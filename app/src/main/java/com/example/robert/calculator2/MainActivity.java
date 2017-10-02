@@ -1,6 +1,7 @@
 package com.example.robert.calculator2;
 
 import android.app.ActivityManager;
+import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -20,6 +21,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     double accumulator = 0;
     double currentValue;
     StringBuffer input = new StringBuffer();
+    CharSequence currentOutput;
 
     public void toast(String s) {
         Toast.makeText(getApplicationContext(), s, Toast.LENGTH_SHORT).show();
@@ -74,6 +76,60 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         output.append(String.valueOf(b));
         }
         operatorlsActive = true;
+    }
+
+    public void ifUnary(char b) {
+        if (!operatorlsActive) {
+            operatorlsActive = true;
+            //if (currentOperator == 0) {
+            //    previousOperator = '+';
+            //} else {
+                previousOperator = currentOperator;
+            //}
+            currentOperator = b;
+            if (input.length() != 0) {
+                currentValue = Double.parseDouble(input.toString());
+
+                switch (currentOperator) {
+                    case 'S': //squared
+                        currentOutput = output.getText();
+
+                        //currentOutput = // remove as many characters as the length of currentValue [input.length()];
+                        output.setText(currentOutput);
+                        currentValue = currentValue * currentValue;
+                        ifBinary(previousOperator);
+                        break;
+                    case 'R': //square root
+                        //
+                        accumulator -= currentValue;
+                        break;
+                    case 'I': //inverse
+                        //
+                        accumulator *= currentValue;
+                        break;
+                    case '%': //percent
+                        //
+                        accumulator /= currentValue;
+                        break;
+                    case 'A': //absolute value
+                        //
+                        accumulator *= currentValue;
+                        break;
+                    case 'V': //invert sign
+                        //
+                        accumulator /= currentValue;
+                        break;
+                }
+
+
+                //output.append(String.valueOf(currentValue));
+                currentOperator = 0;
+                input.setLength(0);
+                operatorlsActive = false;
+            }
+            //output.append(String.valueOf(b));
+        }
+
     }
 
     public void ifEquals() {
@@ -182,7 +238,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             //unary operators
             case R.id.xsquared: //uses single char "S" for Squared
-                output.append("x²");
+                ifUnary('S');
+                //output.append("x²");
                 break;
 
             case R.id.squareroot: //uses single char "R" for Root
