@@ -11,15 +11,14 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private TextView output;
-    private boolean equalsIsActive = false;
-    private boolean operatorlsActive = false;
-    // private String input;
-    private char previousOperator = '+';
-    private char currentOperator;
-    private float accumulator = 0;
-    private float currentValue;
+    TextView output;
 
+    boolean equalsIsActive = false;
+    boolean operatorlsActive = false;
+    char previousOperator = '+';
+    char currentOperator;
+    float accumulator = 0;
+    float currentValue;
     StringBuffer input = new StringBuffer();
 
     public void toast(String s) {
@@ -39,9 +38,72 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (equalsIsActive) {
             accumulator = 0;
             equalsIsActive = false;
+            output.setText("");
         }
         input.append(b);
         operatorlsActive = false;
+    }
+
+    public void ifBinary(char b) {
+        equalsIsActive = false;
+        if (!operatorlsActive) {
+            operatorlsActive = true;
+            if (currentOperator == 0) {
+                previousOperator = '+';
+            } else {
+                previousOperator = currentOperator;
+            }
+            currentOperator = b;
+            if (input.length() != 0) {
+                currentValue = Float.parseFloat(input.toString());
+
+                switch (previousOperator) {
+                    case '+':
+                        accumulator += currentValue;
+                        break;
+                    case '-':
+                        accumulator -= currentValue;
+                        break;
+                    case '*':
+                        accumulator *= currentValue;
+                        break;
+                    case '/':
+                        accumulator /= currentValue;
+                        break;
+                }
+                input.setLength(0);
+            }
+        output.append(String.valueOf(b));
+        }
+        operatorlsActive = true;
+    }
+
+    public void ifEquals() {
+        if (input.length() != 0) {
+            currentValue = Float.parseFloat(input.toString());
+            switch (currentOperator) {
+                case '+':
+                    accumulator += currentValue;
+                    break;
+                case '-':
+                    accumulator -= currentValue;
+                    break;
+                case '*':
+                    accumulator *= currentValue;
+                    break;
+                case '/':
+                    accumulator /= currentValue;
+                    break;
+            }
+
+                input.setLength(0);
+        }
+        output.setText(Float.toString(accumulator));
+        input.setLength(0);
+        previousOperator = '+';
+        currentOperator = 0;
+        operatorlsActive = false;
+        equalsIsActive = true;
     }
 
     @Override
@@ -99,12 +161,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 output.append("9");
                 break;
 
-            //clear all
-            case R.id.clear:
-                output.setText("");
+            //binary operators
+            case R.id.plus: //uses single char "+" for add
+                ifBinary('+');
                 break;
 
-            //operators
+            case R.id.minus: //uses single char "-" for subtract
+                ifBinary('-');
+                break;
+
+            case R.id.times: //uses single char "*" for multiply
+                ifBinary('*');
+                break;
+
+            case R.id.divide: //uses single char "/" for divide
+                ifBinary('/');
+                break;
+
+            //unary operators
             case R.id.xsquared: //uses single char "S" for Squared
                 output.append("x²");
                 break;
@@ -121,22 +195,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 output.append("%");
                 break;
 
-            case R.id.plus: //uses single char "+" for add
-                output.append("+");
-                break;
-
-            case R.id.minus: //uses single char "-" for subtract
-                output.append("-");
-                break;
-
-            case R.id.times: //uses single char "*" for multiply
-                output.append("*");
-                break;
-
-            case R.id.divide: //uses single char "/" for divide
-                output.append("/");
-                break;
-
             case R.id.absolute: //uses single char "A" for Absolute
                 output.append("|x|");
                 break;
@@ -149,8 +207,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 output.append(".");
                 break;
 
+            //equals
             case R.id.equals: //uses single char "=" for equals
-                output.append("=");
+                ifEquals();
+                break;
+
+            //clear all
+            case R.id.clear:
+                operatorlsActive = false;
+                previousOperator = '+';
+                currentOperator = 0;
+                accumulator = 0;
+                currentValue = 0;
+                input.setLength(0);
+                output.setText("");
                 break;
 
             default:
