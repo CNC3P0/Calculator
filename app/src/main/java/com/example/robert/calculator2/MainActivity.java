@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     case '*':
                         accumulator *= currentValue;
                         break;
-                    case '/':
+                    case '÷':
                         accumulator /= currentValue;
                         break;
                 }
@@ -89,11 +89,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 case '*':
                     accumulator *= currentValue;
                     break;
-                case '/':
+                case '÷':
                     accumulator /= currentValue;
                     break;
             }
-
                 input.setLength(0);
         }
         output.setText(Double.toString(accumulator));
@@ -159,6 +158,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 output.append("9");
                 break;
 
+            case R.id.decimal: //uses single char "." for decimal
+                ifDigit('.');
+                output.append(".");
+                break;
+
             //binary operators
             case R.id.plus: //uses single char "+" for add
                 ifBinary('+');
@@ -172,8 +176,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 ifBinary('*');
                 break;
 
-            case R.id.divide: //uses single char "/" for divide
-                ifBinary('/');
+            case R.id.divide: //uses single char "÷" for divide
+                ifBinary('÷');
                 break;
 
             //unary operators
@@ -201,10 +205,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 output.append("+/-");
                 break;
 
-            case R.id.decimal: //uses single char "." for decimal
-                output.append(".");
-                break;
-
             //equals
             case R.id.equals: //uses single char "=" for equals
                 ifEquals();
@@ -224,7 +224,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             default:
                 break;
         }
-
     }
-
 }
