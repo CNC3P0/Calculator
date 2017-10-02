@@ -11,6 +11,17 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
+    private TextView output;
+    private boolean equalsIsActive = false;
+    private boolean operatorlsActive = false;
+    // private String input;
+    private char previousOperator = '+';
+    private char currentOperator;
+    private float accumulator = 0;
+    private float currentValue;
+
+    StringBuffer input = new StringBuffer();
+
     public void toast(String s) {
         Toast.makeText(getApplicationContext(), s, Toast.LENGTH_SHORT).show();
     }
@@ -20,122 +31,132 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-/**       Button one = (Button) findViewById(R.id.button1);
-         one.setOnClickListener(this); // calling onClick() method
-         Button two = (Button) findViewById(R.id.button2);
-         two.setOnClickListener(this);
-         Button three = (Button) findViewById(R.id.button3);
-         three.setOnClickListener(this);
-         Button four = (Button) findViewById(R.id.button4);
-         four.setOnClickListener(this);
-         Button five = (Button) findViewById(R.id.button5);
-         five.setOnClickListener(this);
-         Button six = (Button) findViewById(R.id.button6);
-         six.setOnClickListener(this);
- **/
-        TextView tv = (TextView) findViewById(R.id.display);
-        tv.setText("numbers go here");
+        output = (TextView) findViewById(R.id.display);
+        //output.setText("numbers go here");
+    }
+
+    public void ifDigit(char b) {
+        if (equalsIsActive) {
+            accumulator = 0;
+            equalsIsActive = false;
+        }
+        input.append(b);
+        operatorlsActive = false;
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
 
+            //digits
             case R.id.button0:
-                toast("0");
+                ifDigit('0');
+                output.append("0");
                 break;
 
             case R.id.button1:
-                toast("1");
+                ifDigit('1');
+                output.append("1");
                 break;
 
             case R.id.button2:
-                toast("2");
+                ifDigit('2');
+                output.append("2");
                 break;
 
             case R.id.button3:
-                toast("3");
+                ifDigit('3');
+                output.append("3");
                 break;
 
             case R.id.button4:
-                toast("4");
+                ifDigit('4');
+                output.append("4");
                 break;
 
             case R.id.button5:
-                toast("5");
+                ifDigit('5');
+                output.append("5");
                 break;
 
             case R.id.button6:
-                toast("6");
+                ifDigit('6');
+                output.append("6");
                 break;
 
             case R.id.button7:
-                toast("7");
+                ifDigit('7');
+                output.append("7");
                 break;
 
             case R.id.button8:
-                toast("8");
+                ifDigit('8');
+                output.append("8");
                 break;
 
             case R.id.button9:
-                toast("9");
+                ifDigit('9');
+                output.append("9");
                 break;
 
-            case R.id.xsquared:
-                toast("xsquared");
-                break;
-
-            case R.id.squareroot:
-                toast("squareroot");
-                break;
-
-            case R.id.inverse:
-                toast("inverse");
-                break;
-
-            case R.id.percent:
-                toast("percent");
-                break;
-
-            case R.id.plus:
-                toast("plus");
-                break;
-
-            case R.id.minus:
-                toast("minus");
-                break;
-
-            case R.id.times:
-                toast("times");
-                break;
-
-            case R.id.divide:
-                toast("divide");
-                break;
-
+            //clear all
             case R.id.clear:
-                toast("clear");
+                output.setText("");
                 break;
 
-            case R.id.absolute:
-                toast("absolute");
+            //operators
+            case R.id.xsquared: //uses single char "S" for Squared
+                output.append("x²");
                 break;
 
-            case R.id.changesign:
-                toast("changesign");
+            case R.id.squareroot: //uses single char "R" for Root
+                output.append("√");
                 break;
 
-            case R.id.decimal:
-                toast("decimal");
+            case R.id.inverse: //uses single char "I" for Inverse
+                output.append("1/x");
                 break;
 
-            case R.id.equals:
-                toast("equals");
+            case R.id.percent: //uses single char "%" for percent
+                output.append("%");
+                break;
+
+            case R.id.plus: //uses single char "+" for add
+                output.append("+");
+                break;
+
+            case R.id.minus: //uses single char "-" for subtract
+                output.append("-");
+                break;
+
+            case R.id.times: //uses single char "*" for multiply
+                output.append("*");
+                break;
+
+            case R.id.divide: //uses single char "/" for divide
+                output.append("/");
+                break;
+
+            case R.id.absolute: //uses single char "A" for Absolute
+                output.append("|x|");
+                break;
+
+            case R.id.invertsign: //uses single char "V" for inVert sign (didn't want to use C because of Clear)
+                output.append("+/-");
+                break;
+
+            case R.id.decimal: //uses single char "." for decimal
+                output.append(".");
+                break;
+
+            case R.id.equals: //uses single char "=" for equals
+                output.append("=");
                 break;
 
             default:
                 break;
         }
+
     }
 
 }

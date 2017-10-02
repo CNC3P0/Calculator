@@ -42,6 +42,7 @@
             android:layout_gravity="fill"
             android:layout_margin="0dp"
             android:layout_rowWeight="1"
+            android:clickable="false"
             android:gravity="end|center_vertical"
             android:textSize="36sp"
             tools:layout_editor_absoluteY="0dp" />
@@ -217,14 +218,14 @@
             android:textSize="36sp" />
 
         <Button
-            android:id="@+id/changesign"
+            android:id="@+id/invertsign"
             android:layout_columnWeight="1"
             android:layout_gravity="fill"
             android:layout_margin="0dp"
             android:layout_rowWeight="1"
             android:background="@android:color/holo_green_light"
             android:onClick="onClick"
-            android:text="@string/changesign"
+            android:text="@string/invertsign"
             android:textSize="36sp" />
 
         <Button
@@ -278,7 +279,7 @@
             android:layout_gravity="fill"
             android:layout_margin="0dp"
             android:layout_rowWeight="1"
-            android:background="@android:color/holo_green_light"
+            android:background="@android:color/holo_orange_light"
             android:onClick="onClick"
             android:text="@string/decimal"
             android:textSize="36sp" />
