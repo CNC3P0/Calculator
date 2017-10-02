@@ -17,8 +17,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     boolean operatorlsActive = false;
     char previousOperator = '+';
     char currentOperator;
-    float accumulator = 0;
-    float currentValue;
+    double accumulator = 0;
+    double currentValue;
     StringBuffer input = new StringBuffer();
 
     public void toast(String s) {
@@ -29,9 +29,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         output = (TextView) findViewById(R.id.display);
-        //output.setText("numbers go here");
     }
 
     public void ifDigit(char b) {
@@ -55,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
             currentOperator = b;
             if (input.length() != 0) {
-                currentValue = Float.parseFloat(input.toString());
+                currentValue = Double.parseDouble(input.toString());
 
                 switch (previousOperator) {
                     case '+':
@@ -80,7 +78,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public void ifEquals() {
         if (input.length() != 0) {
-            currentValue = Float.parseFloat(input.toString());
+            currentValue = Double.parseDouble(input.toString());
             switch (currentOperator) {
                 case '+':
                     accumulator += currentValue;
@@ -98,7 +96,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 input.setLength(0);
         }
-        output.setText(Float.toString(accumulator));
+        output.setText(Double.toString(accumulator));
         input.setLength(0);
         previousOperator = '+';
         currentOperator = 0;
