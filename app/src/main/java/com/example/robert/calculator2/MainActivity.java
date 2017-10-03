@@ -1,14 +1,9 @@
 package com.example.robert.calculator2;
 
-import android.app.ActivityManager;
-import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -22,10 +17,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     double currentValue;
     StringBuffer input = new StringBuffer();
     CharSequence currentOutput;
-
-    public void toast(String s) {
-        Toast.makeText(getApplicationContext(), s, Toast.LENGTH_SHORT).show();
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,7 +96,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             currentOperator = b;
             if (input.length() != 0) {
                 currentValue = Double.parseDouble(input.toString());
-
+                //Cases for use on values used within equations
                 switch (currentOperator) {
                     case 'S': //Squared
                         currentOutput = output.getText();
@@ -156,10 +147,32 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         processBinary(previousOperator);
                         break;
                 }
-                currentOperator = 0;
-                input.setLength(0);
-                operatorlsActive = false;
+                equalsIsActive = true;
             }
+            else { //Cases for use on single values, primarily after pressing equals operator
+
+                switch (currentOperator) {
+                    case 'S':
+                        accumulator = accumulator * accumulator;
+                        break;
+                    case 'R':
+                        accumulator = Math.sqrt(accumulator);
+                        break;
+                    case 'I': //Inverse
+                        accumulator = 1 / accumulator;
+                        break;
+                    case 'A': //Absolute value
+                        accumulator = Math.abs(accumulator);
+                        break;
+                    case 'V': //inVert sign
+                        accumulator = 0 - accumulator;
+                        break;
+                }
+                output.setText(Double.toString(accumulator));
+            }
+            currentOperator = 0;
+            input.setLength(0);
+            operatorlsActive = false;
         }
     }
 
@@ -249,7 +262,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             case R.id.decimal: //uses single char "." for decimal
                 ifDecimal('.');
-
                 break;
 
             //binary operators
@@ -272,7 +284,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             //unary operators
             case R.id.xsquared: //uses single char "S" for Squared
                 ifUnary('S');
-                //output.append("x²");
                 break;
 
             case R.id.squareroot: //uses single char "R" for Root
