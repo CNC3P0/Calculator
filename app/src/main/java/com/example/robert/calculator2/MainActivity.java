@@ -14,8 +14,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     TextView output;
 
-    boolean equalsIsActive = false;
-    boolean operatorlsActive = false;
+    boolean equalsIsActive = false;     // Flag for whether previous button was equals
+    boolean operatorlsActive = false;   // Flag for whether previous button was an operator
     char previousOperator = '+';
     char currentOperator;
     double accumulator = 0;
@@ -34,6 +34,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         output = (TextView) findViewById(R.id.display);
     }
 
+    public void processBinary(char operator) {
+        switch (operator) {
+            case '+':
+                accumulator += currentValue;
+                break;
+            case '-':
+                accumulator -= currentValue;
+                break;
+            case '*':
+                accumulator *= currentValue;
+                break;
+            case '÷':
+                accumulator /= currentValue;
+                break;
+        }
+    }
+
     public void ifDigit(char b) {
         if (equalsIsActive) {
             accumulator = 0;
@@ -42,6 +59,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         input.append(b);
         operatorlsActive = false;
+    }
+
+    public void ifDecimal(char b) {
+        if (equalsIsActive) {
+            accumulator = 0;
+            equalsIsActive = false;
+            output.setText("");
+        }
+        if (input.indexOf(".") == -1) {
+            input.append(b);
+            output.append(".");
+            operatorlsActive = false;
+        }
     }
 
     public void ifBinary(char b) {
@@ -56,21 +86,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             currentOperator = b;
             if (input.length() != 0) {
                 currentValue = Double.parseDouble(input.toString());
-
-                switch (previousOperator) {
-                    case '+':
-                        accumulator += currentValue;
-                        break;
-                    case '-':
-                        accumulator -= currentValue;
-                        break;
-                    case '*':
-                        accumulator *= currentValue;
-                        break;
-                    case '÷':
-                        accumulator /= currentValue;
-                        break;
-                }
+                processBinary(previousOperator);
                 input.setLength(0);
             }
         output.append(String.valueOf(b));
@@ -80,56 +96,71 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public void ifUnary(char b) {
         if (!operatorlsActive) {
-            operatorlsActive = true;
-            //if (currentOperator == 0) {
-            //    previousOperator = '+';
-            //} else {
+            //operatorlsActive = true;
+            if (currentOperator == 0) {
+                previousOperator = '+';
+            } else {
                 previousOperator = currentOperator;
-            //}
+            }
             currentOperator = b;
             if (input.length() != 0) {
                 currentValue = Double.parseDouble(input.toString());
 
                 switch (currentOperator) {
-                    case 'S': //squared
+                    case 'S': //Squared
                         currentOutput = output.getText();
-
-                        //currentOutput = // remove as many characters as the length of currentValue [input.length()];
-                        output.setText(currentOutput);
+                        currentOutput = currentOutput.subSequence(0,currentOutput.length()-input.length());
                         currentValue = currentValue * currentValue;
-                        ifBinary(previousOperator);
+                        currentOutput = currentOutput + Double.toString(currentValue);
+                        output.setText(currentOutput);
+                        processBinary(previousOperator); //apply previous function to this result
                         break;
-                    case 'R': //square root
-                        //
-                        accumulator -= currentValue;
+                    case 'R': //square Root
+                        currentOutput = output.getText();
+                        currentOutput = currentOutput.subSequence(0,currentOutput.length()-input.length());
+                        currentValue = Math.sqrt(currentValue);
+                        currentOutput = currentOutput + Double.toString(currentValue);
+                        output.setText(currentOutput);
+                        processBinary(previousOperator);
                         break;
-                    case 'I': //inverse
-                        //
-                        accumulator *= currentValue;
+                    case 'I': //Inverse
+                        currentOutput = output.getText();
+                        currentOutput = currentOutput.subSequence(0,currentOutput.length()-input.length());
+                        currentValue = 1 / currentValue;
+                        currentOutput = currentOutput + Double.toString(currentValue);
+                        output.setText(currentOutput);
+                        processBinary(previousOperator);
                         break;
                     case '%': //percent
-                        //
-                        accumulator /= currentValue;
+                        currentOutput = output.getText();
+                        currentOutput = currentOutput.subSequence(0,currentOutput.length()-input.length());
+                        currentValue = accumulator * currentValue / 100;
+                        currentOutput = currentOutput + Double.toString(currentValue);
+                        output.setText(currentOutput);
+                        processBinary(previousOperator);
                         break;
-                    case 'A': //absolute value
-                        //
-                        accumulator *= currentValue;
+                    case 'A': //Absolute value
+                        currentOutput = output.getText();
+                        currentOutput = currentOutput.subSequence(0,currentOutput.length()-input.length());
+                        currentValue = Math.abs(currentValue);
+                        currentOutput = currentOutput + Double.toString(currentValue);
+                        output.setText(currentOutput);
+                        processBinary(previousOperator);
                         break;
-                    case 'V': //invert sign
-                        //
-                        accumulator /= currentValue;
+                    case 'V': //inVert sign
+                        currentOutput = output.getText();
+                        currentOutput = currentOutput.subSequence(0,currentOutput.length()-input.length());
+                        currentValue = 0 - currentValue;
+                        currentOutput = currentOutput + Double.toString(currentValue);
+                        output.setText(currentOutput);
+                        processBinary(previousOperator);
                         break;
                 }
-
-
-                //output.append(String.valueOf(currentValue));
                 currentOperator = 0;
                 input.setLength(0);
                 operatorlsActive = false;
             }
-            //output.append(String.valueOf(b));
         }
-
     }
 
     public void ifEquals() {
@@ -148,8 +179,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 case '÷':
                     accumulator /= currentValue;
                     break;
+                default:
+                    accumulator = currentValue;
             }
-                input.setLength(0);
+            input.setLength(0);
         }
         output.setText(Double.toString(accumulator));
         input.setLength(0);
@@ -160,7 +193,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     @Override
-    public void onClick(View v) {
+    public void onClick(View v) { //Monitor button presses and trigger events
         switch (v.getId()) {
 
             //digits
@@ -215,8 +248,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
 
             case R.id.decimal: //uses single char "." for decimal
-                ifDigit('.');
-                output.append(".");
+                ifDecimal('.');
+
                 break;
 
             //binary operators
@@ -243,23 +276,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
 
             case R.id.squareroot: //uses single char "R" for Root
-                output.append("√");
+                ifUnary('R');
                 break;
 
             case R.id.inverse: //uses single char "I" for Inverse
-                output.append("1/x");
+                ifUnary('I');
                 break;
 
             case R.id.percent: //uses single char "%" for percent
-                output.append("%");
+                ifUnary('%');
                 break;
 
             case R.id.absolute: //uses single char "A" for Absolute
-                output.append("|x|");
+                ifUnary('A');
                 break;
 
             case R.id.invertsign: //uses single char "V" for inVert sign (didn't want to use C because of Clear)
-                output.append("+/-");
+                ifUnary('V');
                 break;
 
             //equals
