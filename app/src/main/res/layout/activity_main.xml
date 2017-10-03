@@ -100,6 +100,7 @@
             android:layout_rowWeight="1"
             android:background="@android:color/holo_orange_dark"
             android:onClick="onClick"
+            android:text="@string/divide"
             android:textSize="36sp" />
 
         <Button
@@ -110,6 +111,7 @@
             android:layout_rowWeight="1"
             android:background="@android:color/holo_green_light"
             android:onClick="onClick"
+            android:text="@string/times"
             android:textSize="36sp" />
 
         <Button
@@ -121,6 +123,7 @@
             android:layout_rowWeight="1"
             android:background="@android:color/holo_purple"
             android:onClick="onClick"
+            android:text="@string/minus"
             android:textSize="36sp" />
 
         <Button
@@ -132,6 +135,7 @@
             android:layout_rowWeight="1"
             android:background="@android:color/holo_orange_dark"
             android:onClick="onClick"
+            android:text="@string/plus"
             android:textSize="36sp" />
 
         <Button
