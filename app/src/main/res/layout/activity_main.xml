@@ -38,7 +38,7 @@
             android:id="@+id/display"
             android:layout_height="100dp"
             android:layout_columnSpan="4"
-            android:layout_columnWeight="1"
+            android:layout_columnWeight="0"
             android:layout_gravity="fill"
             android:layout_margin="0dp"
             android:layout_rowWeight="1"
